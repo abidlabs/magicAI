@@ -1,5 +1,5 @@
 import unittest
-from analyze import read_data
+import analyze
 import pandas as pd
 import os
 
@@ -11,8 +11,8 @@ test_deploy_filename = dir_path + '/test_data/deploy.csv'
 
 class AnalyzeTestCase(unittest.TestCase):
     def test_read_data(self):
-        self.assertIsInstance(read_data(test_train_filename), pd.DataFrame)
-        self.assertIsInstance(read_data(test_deploy_filename), pd.DataFrame)
+        self.assertIsInstance(analyze.read_data(test_train_filename, 'numerical'), pd.DataFrame)
+        self.assertIsInstance(analyze.read_data(test_deploy_filename, 'numerical'), pd.DataFrame)
 
 
 if __name__ == '__main__':
