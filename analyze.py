@@ -14,9 +14,9 @@ def read_data(filename, data_type):
             data = pd.read_csv(filename)
             return data
         except ValueError:
-            print('ValueError: Could not read {}. For numerical data use csv, json, or html files.'.format(filename))
+            print(f'ValueError: Could not read {filename}. For numerical data use csv, json, or html files.')
     else:
-        raise ValueError('{} not a valid data_type.'.format(data_type))
+        raise ValueError(f'{data_type} not a valid data_type.')
 
 
 def summarize_data(data):
