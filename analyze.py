@@ -2,54 +2,54 @@ import sys
 import pandas as pd
 
 
-def read_data(filename, data_type):
+def read_data(file_path, data_type):
     """
-    reads data from file depending on type, to something that can be processed
-    :param filename: path to file that should be read
-    :param data_type: type of data in file (numerical, image, etc)
-    :return: loaded data (pandas df, etc)
+    reads data from file depending on type, to object that can be processed
+    :param file_path: a string with the path to file that should be read
+    :param data_type: a string with the type of data in file (numerical, image, etc)
+    :return: a DataFrame with the loaded data (pandas df, etc)
     """
     if data_type == 'numerical':
         try:
-            data = pd.read_csv(filename)
+            data = pd.read_csv(file_path)
             return data
         except ValueError:
-            print(f'ValueError: Could not read {filename}. For numerical data use csv, json, or html files.')
+            print(f'ValueError: Could not read {file_path}. For numerical data use csv, json, or html files.')
     else:
         raise ValueError(f'{data_type} not a valid data_type.')
 
 
-def summarize_data(data):
+def summarize_data(loaded_data):
     """
     summarizes analysis of data (mean, median etc)
-    :param data: loaded data to be summarized
-    :return: data description/summary
+    :param loaded_data: a DataFrame which consists of the loaded data to be summarized
+    :return: Pandas data description of DataFrame
 
     """
-    return data.describe(include='all')
+    return loaded_data.describe(include='all')
 
 
-def compare_data(train, deploy, data_type, verbose=False):
+def compare_data(first_dataset_path, second_dataset_path, data_type, verbose=False):
     """
     main analysis function that creates the comparison of data summaries
-    :param train: path to file that represents training data
-    :param deploy: path to file that represents deployed data
-    :param data_type: type of data in the train and deploy files (numerical, image, etc)
-    :return: two item comparison list where items are data description summaries for the files
+    :param first_dataset_path: a string with the path to the first file to compare (ex: representing training data)
+    :param second_dataset_path: a string with the path to the second file to compare (ex: representing deployment data)
+    :param data_type: a string with the type of data in the files to compare (ex: numerical)
+    :return: a list with two items which are the data descriptions for the files
     """
-    train_df = read_data(train, data_type)
-    deploy_df = read_data(deploy, data_type)
+    first_dataset_df = read_data(first_dataset_path, data_type)
+    second_dataset_df = read_data(second_dataset_path, data_type)
 
-    train_summary = summarize_data(train_df)
-    deploy_summary = summarize_data(deploy_df)
+    first_dataset_summary = summarize_data(first_dataset_df)
+    second_dataset_summary = summarize_data(second_dataset_df)
 
-    analysis = [train_summary, deploy_summary]
+    analysis = [first_dataset_summary, second_dataset_summary]
 
     if verbose:
-        print('A summary of your training data (first file)..')
-        print(train_summary)
-        print('A summary of your deployed data (second file)..')
-        print(deploy_summary)
+        print(f'A summary of data in {first_dataset_path} (your first file)..')
+        print(first_dataset_summary)
+        print(f'A summary of data in {second_dataset_path} (your second file)..')
+        print(second_dataset_summary)
 
     return analysis
 
