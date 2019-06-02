@@ -1,6 +1,5 @@
 import views
 
-
 get_endpoints = {
     '/api/settings/': views.get_settings
 }

@@ -1,6 +1,5 @@
 import json
 
-
 def get_settings():
     try:
         with open("settings.json") as f:

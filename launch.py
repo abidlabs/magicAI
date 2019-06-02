@@ -62,7 +62,6 @@ def serve_files_in_background(port, directory_to_serve=None):
             path = os.path.join(self.path, '')  # adds trailing '/' if none is there
             if path in urls.post_endpoints:
                 self._set_headers()
-                print("works")
                 msg = json.loads(self.rfile.read())
                 urls.post_endpoints[path](msg)
             else:
@@ -133,4 +132,3 @@ try:
         time.sleep(0.5)
 except ServiceExit:
     pass
-
