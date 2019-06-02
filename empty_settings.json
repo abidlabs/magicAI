@@ -1,0 +1,14 @@
+{
+  "DATASETS": {
+    "DATASET_1": {
+      "NAME": "",
+      "DB_URL": "",
+      "METRIC_COLUMN": ""
+    },
+    "DATASET_2": {
+      "NAME": "",
+      "DB_URL": "",
+      "METRIC_COLUMN": ""
+    }
+  }
+}
