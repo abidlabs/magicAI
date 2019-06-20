@@ -1,3 +1,6 @@
 *.pyc
 *.xml
 *.iml
+.ipynb*
+data/*
+outputs/*
