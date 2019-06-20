@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  font-family: Verdana;
+}
+a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+a:hover {
+  text-decoration: underline;
+}
+a[selected] {
+  text-decoration: underline;
+}
+nav {
+  display: flex;
+  height: 100px;
+  align-items: center;
+  padding: 0 40px;
+  background-color: #EEEEEE;
+}
+nav > a {
+  padding: 10px 40px;
+}
+#settings {
+  margin: 10px 40px 0;
+}
+label {
+  display: block;
+  padding: 8px;
+  margin: 4px 0;
+  background-color: #EEEEEE;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+label > input {
+  font-size: 20px;
+  margin-left: 10px;
+  padding: 6px !important;
+  width: 80%;
+  outline: none;
+  border: solid 1px #888888 !important;
+}
+input[type=submit] {
+	border: none;
+  background: #EEA45D;
+  color: white;
+  font-weight: bold !important;
+	padding: 10px 40px;
+	font: inherit;
+	cursor: pointer;
+  margin: 10px 0;
+}
